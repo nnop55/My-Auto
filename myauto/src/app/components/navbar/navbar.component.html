@@ -1,0 +1,31 @@
+<nav class="navbar">
+    <a routerLink="/" class="logo">
+        Buy & Sell cars
+    </a>
+    <ul class="nav-links">
+        <li>
+            <div class="menu-wrapper">
+                <button (click)="toggleMenu()" class="user-btn"><mat-icon>perm_identity</mat-icon></button>
+                <div class="menu" [ngClass]="{'open': menuOpen}">
+                    <div class="option-list">
+                        <ng-container *ngIf="!_shared.userLoggedIn">
+                            <a routerLink="/user/login" (click)="toggleMenu()">Log In</a>
+                            <a routerLink="/user/register" (click)="toggleMenu()">Register</a>
+                        </ng-container>
+                        <ng-container *ngIf="_shared.userLoggedIn">
+                            <a routerLink="/user/profile" (click)="toggleMenu()">Profile</a>
+                            <a routerLink="/user/login" (click)="logOut()">Log out</a>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li><button class="add-car" [routerLink]="addBtn">Add +</button></li>
+    </ul>
+
+    <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</nav>

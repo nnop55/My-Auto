@@ -1,0 +1,94 @@
+<div class="main">
+    <div class="filters-wrapper">
+        <div class="sides">
+            <div class="left">
+                <div class="filter-group">
+                    <label for="manufacturer-selector">Manufacturer</label>
+                    <select id="manufacturer-selector" class="pretty-selector" [(ngModel)]="currentCar.manufacturer">
+                        <option *ngFor="let manufacturer of carInfoItem?.manufacturers" [value]="manufacturer">
+                            {{ manufacturer }}
+                        </option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="manufacturer-selector">Model</label>
+                    <select id="manufacturer-selector" class="pretty-selector" [(ngModel)]="currentCar.model">
+                        <option *ngFor="let model of _shared.getModelOptions(carInfoItem,currentCar)" [value]="model">
+                            {{ model }}
+                        </option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="type-selector">Type</label>
+                    <select id="type-selector" class="pretty-selector" [(ngModel)]="currentCar.type">
+                        <option *ngFor="let type of carInfoItem?.types" [value]="type">{{ type }}</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="fuel-selector">Fuel Type</label>
+                    <select id="fuel-selector" class="pretty-selector" [(ngModel)]="currentCar.fuelType">
+                        <option *ngFor="let fuel of carInfoItem?.fuelTypes" [value]="fuel">{{ fuel }}</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="fuel-selector">Year</label>
+                    <select id="fuel-selector" class="pretty-selector" [(ngModel)]="currentCar.year">
+                        <option *ngFor="let year of carInfoItem?.years" [value]="year">{{ year }}</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="fuel-selector">Place</label>
+                    <select id="fuel-selector" class="pretty-selector" [(ngModel)]="currentCar.place">
+                        <option *ngFor="let year of carInfoItem?.places" [value]="year">{{ year }}</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="fuel-selector">Transsimission</label>
+                    <select id="fuel-selector" class="pretty-selector" [(ngModel)]="currentCar.transsimission">
+                        <option *ngFor="let year of carInfoItem?.transsimissions" [value]="year">{{ year }}</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="fuel-selector">Engine</label>
+                    <select id="fuel-selector" class="pretty-selector" [(ngModel)]="currentCar.engine">
+                        <option *ngFor="let year of carInfoItem?.engines" [value]="year">{{ year }}</option>
+                    </select>
+                </div>
+                <div class="price-filter">
+                    <label for="price">Price:</label>
+                    <input type="number" [(ngModel)]="currentCar.price">
+                </div>
+                <div class="price-filter">
+                    <label for="price">Fuel Consumtion (City/L):</label>
+                    <input type="number" [(ngModel)]="currentCar.fuelConsumptionCity">
+                </div>
+                <div class="price-filter">
+                    <label for="price">Fuel Consumtion (Highway/L):</label>
+                    <input type="number" [(ngModel)]="currentCar.fuelConsumptionHighway">
+                </div>
+                <input type="hidden" [(ngModel)]="currentCar.user_id">
+                <input type="hidden" [(ngModel)]="currentCar.uploadedDate">
+            </div>
+            <div class="right">
+                <div class="img-group">
+                    <label for="avatar">Choose one or more images (Max limit 9):</label>
+                    <label class="custom-file-upload">
+                        <input type="file" class="custom-file-input" (change)="onSelect($event)" accept="image/*"
+                            multiple>
+                    </label>
+                    <div class="imgsarea">
+                        <div class="car-img" (mouseover)="showButton = true" (mouseleave)="showButton = false"
+                            *ngFor='let image of currentCar.images; let i = index'>
+                            <img [src]="image">
+                            <button (click)="_shared.deletePhoto(i,currentCar)"
+                                *ngIf="showButton"><mat-icon>delete_outline</mat-icon></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="button">
+        <button class="filter-button" (click)="updateCarData()">Update car</button>
+    </div>
+</div>

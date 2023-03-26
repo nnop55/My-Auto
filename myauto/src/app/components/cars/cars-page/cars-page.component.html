@@ -1,0 +1,33 @@
+<div class="main">
+    <div class="filters-wrapper">
+        <div class="cardsarea">
+            <div *ngFor="let car of carData" class="card">
+                <div class="left">
+                    <img [src]="car.images[0]">
+                </div>
+                <div class="middle">
+                    <div class="car-name">
+                        <h3>{{car.manufacturer}} {{car.model}}</h3>
+                        <h3>{{car.year}} Year</h3>
+                    </div>
+                    <div class="bit-info">
+                        <p>{{car.engine}} {{car.fuelType}}</p>
+                        <p>{{car.transsimission}}</p>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="car-place">
+                        <p>{{car.place}}</p>
+                    </div>
+                    <div class="car-price">
+                        <p>{{car.price | number}}</p>
+                        <button (click)="toggleButton()" [@toggle]="isToggled ? 'USD' : 'GEL'">{{usdOrGel}}</button>
+                    </div>
+                    <div class="full">
+                        <button routerLink="/car/{{car.uid}}">Show more</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

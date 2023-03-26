@@ -1,0 +1,102 @@
+<div class="main">
+    <div class="filters-wrapper">
+        <div class="sides">
+            <div class="left">
+                <div class="filter-group">
+                    <label for="manufacturer-selector">Manufacturer</label>
+                    <select (ngModelChange)="validation()" id="manufacturer-selector" class="pretty-selector"
+                        [(ngModel)]="carItem.manufacturer">
+                        <option *ngFor="let manufacturer of carInfoItem?.manufacturers" [value]="manufacturer">
+                            {{ manufacturer }}
+                        </option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="manufacturer-selector">Model</label>
+                    <select (ngModelChange)="validation()" id="manufacturer-selector" class="pretty-selector"
+                        [(ngModel)]="carItem.model">
+                        <option *ngFor="let model of _shared.getModelOptions(carInfoItem,carItem)" [value]="model">
+                            {{ model }}
+                        </option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="type-selector">Type</label>
+                    <select (ngModelChange)="validation()" id="type-selector" class="pretty-selector"
+                        [(ngModel)]="carItem.type">
+                        <option *ngFor="let type of carInfoItem?.types" [value]="type">{{ type }}</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="fuel-selector">Fuel Type</label>
+                    <select (ngModelChange)="validation()" id="fuel-selector" class="pretty-selector"
+                        [(ngModel)]="carItem.fuelType">
+                        <option *ngFor="let fuel of carInfoItem?.fuelTypes" [value]="fuel">{{ fuel }}</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="fuel-selector">Year</label>
+                    <select (ngModelChange)="validation()" id="fuel-selector" class="pretty-selector"
+                        [(ngModel)]="carItem.year">
+                        <option *ngFor="let year of carInfoItem?.years" [value]="year">{{ year }}</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="fuel-selector">Place</label>
+                    <select (ngModelChange)="validation()" id="fuel-selector" class="pretty-selector"
+                        [(ngModel)]="carItem.place">
+                        <option *ngFor="let year of carInfoItem?.places" [value]="year">{{ year }}</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="fuel-selector">Transsimission</label>
+                    <select (ngModelChange)="validation()" id="fuel-selector" class="pretty-selector"
+                        [(ngModel)]="carItem.transsimission">
+                        <option *ngFor="let year of carInfoItem?.transsimissions" [value]="year">{{ year }}</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="fuel-selector">Engine</label>
+                    <select (ngModelChange)="validation()" id="fuel-selector" class="pretty-selector"
+                        [(ngModel)]="carItem.engine">
+                        <option *ngFor="let year of carInfoItem?.engines" [value]="year">{{ year }}</option>
+                    </select>
+                </div>
+                <div class="price-filter">
+                    <label for="price">Price:</label>
+                    <input type="number" (keyup)="validation()" [(ngModel)]="carItem.price">
+                </div>
+                <div class="price-filter">
+                    <label for="price">Fuel Consumtion (City/L):</label>
+                    <input type="number" (keyup)="validation()" [(ngModel)]="carItem.fuelConsumptionCity">
+                </div>
+                <div class="price-filter">
+                    <label for="price">Fuel Consumtion (Highway/L):</label>
+                    <input type="number" (keyup)="validation()" [(ngModel)]="carItem.fuelConsumptionHighway">
+                </div>
+                <input type="hidden" [(ngModel)]="carItem.user_id">
+                <input type="hidden" [(ngModel)]="carItem.uploadedDate">
+            </div>
+            <div class="right">
+                <div class="img-group">
+                    <label for="avatar">Choose one or more images (Max limit 9):</label>
+                    <label class="custom-file-upload">
+                        <input type="file" class="custom-file-input" (change)="onSelect($event)" accept="image/*"
+                            multiple>
+                    </label>
+                    <div class="imgsarea">
+                        <div class="car-img" (mouseover)="showButton = true" (mouseleave)="showButton = false"
+                            *ngFor='let image of carItem.images; let i = index'>
+                            <img [src]="image">
+                            <button (click)="_shared.deletePhoto(i,carItem)"
+                                *ngIf="showButton"><mat-icon>delete_outline</mat-icon></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="button">
+        <button class="filter-button" [disabled]="disableBtn" (click)="addCar()">Add car</button>
+    </div>
+</div>

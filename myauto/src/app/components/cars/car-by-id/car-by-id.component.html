@@ -1,0 +1,81 @@
+<div class="main">
+    <div class="title">
+        <div class="car-name">
+            <div class="sides">
+                <div class="left">
+                    <div class="top">
+                        <h1>{{currentCar?.manufacturer}} {{currentCar?.model}} <span>{{currentCar?.year}}</span></h1>
+                    </div>
+                    <div class="bottom">
+                        <h4>{{currentCar?.place}}, Uploaded: {{currentCar?.uploadedDate | date}}</h4>
+                    </div>
+                </div>
+                <div class="right">
+                    <div *ngIf="showFavoriteBtn" class="favorite">
+                        <button (click)="addToFavorites(currentCar)">
+                            <mat-icon>{{toggleFavoriteBtn}}</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="images">
+        <div class="slider">
+            <div class="btns left" (mouseover)="showButton = true" (mouseleave)="showButton = false">
+                <button class="prev" *ngIf="showButton" (click)="prevSlide()">&#10094;</button>
+            </div>
+            <div class="slides">
+                <img class="active" (mouseover)="showButton = true" (mouseleave)="showButton = false"
+                    *ngFor="let image of currentCar?.images" [src]="image" alt="image" />
+            </div>
+            <div class="btns right" (mouseover)="showButton = true" (mouseleave)="showButton = false">
+                <button class="next" *ngIf="showButton" (click)="nextSlide()">&#10095;</button>
+            </div>
+        </div>
+        <div class="small-imgs-area">
+            <div class="small-imgs" *ngFor="let img of currentCar?.images; let i = index">
+                <img [src]="img" (mouseover)="onMouseOver(i)">
+            </div>
+        </div>
+    </div>
+    <div class="car-info">
+        <div class="info-container">
+            <div class="price">
+                <h3>{{currentCar?.price | number}}</h3>
+                <button (click)="toggleButton()" [@toggle]="isToggled ? 'USD' : 'GEL'">{{usdOrGel}}</button>
+            </div>
+            <div class="info-box">
+                <div class="info-title">
+                    <h3>About car</h3>
+                </div>
+                <div class="all-info">
+                    <p>
+                        Manufacturer <span>{{currentCar?.manufacturer}}</span>
+                    </p>
+                    <p>
+                        Model <span>{{currentCar?.model}}</span>
+                    </p>
+                    <p>
+                        Engine <span>{{currentCar?.engine}}</span>
+                    </p>
+                    <p>
+                        Type <span>{{currentCar?.type}}</span>
+                    </p>
+                    <p>
+                        Year <span>{{currentCar?.year}}</span>
+                    </p>
+                    <p>
+                        Fuel type <span>{{currentCar?.fuelType}}</span>
+                    </p>
+                    <p>
+                        Fuel Consumption (City) <span>{{currentCar?.fuelConsumptionCity}} L/100km</span>
+                    </p>
+                    <p>
+                        Fuel Consumption (Highway) <span>{{currentCar?.fuelConsumptionHighway}} L/100km</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

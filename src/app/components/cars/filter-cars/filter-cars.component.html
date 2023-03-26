@@ -1,0 +1,46 @@
+<div class="main">
+    <div class="filters-wrapper">
+        <div class="filter-group">
+            <label for="manufacturer-selector">Manufacturer</label>
+            <select id="manufacturer-selector" class="pretty-selector" [(ngModel)]="carItem.manufacturer">
+                <option *ngFor="let manufacturer of carInfoItem?.manufacturers" [value]="manufacturer">
+                    {{ manufacturer }}
+                </option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label for="manufacturer-selector">Model</label>
+            <select id="manufacturer-selector" class="pretty-selector" [(ngModel)]="carItem.model">
+                <option *ngFor="let model of _shared.getModelOptions(carInfoItem,carItem)" [value]="model">
+                    {{ model }}
+                </option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label for="type-selector">Type</label>
+            <select id="type-selector" class="pretty-selector" [(ngModel)]="carItem.type">
+                <option *ngFor="let type of carInfoItem?.types" [value]="type">{{ type }}</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label for="fuel-selector">Fuel Type</label>
+            <select id="fuel-selector" class="pretty-selector" [(ngModel)]="carItem.fuelType">
+                <option *ngFor="let fuel of carInfoItem?.fuelTypes" [value]="fuel">{{ fuel }}</option>
+            </select>
+        </div>
+        <div class="price-range-filter">
+            <label for="min-price">Min Price:</label>
+            <input type="number" id="min-price" [(ngModel)]="carItem.minPrice">
+
+            <label for="max-price">Max Price:</label>
+            <input type="number" id="max-price" [(ngModel)]="carItem.maxPrice">
+        </div>
+    </div>
+    <div class="button">
+        <button class="filter-button" (click)="filterCarsBtn()">Filter</button>
+    </div>
+</div>
+
+<div class="all-cars-btn">
+    <button routerLink="/cars">Show all cars</button>
+</div>

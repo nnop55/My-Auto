@@ -1,0 +1,192 @@
+.main {
+    padding: 10px;
+    box-shadow: 0px 0px 5px black;
+    border-radius: 5px;
+    width: 80%;
+    margin: 130px auto;
+}
+
+.filters-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
+}
+
+.img-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0px 0px 5px;
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 1rem;
+}
+
+.pretty-selector {
+    appearance: none;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: #444;
+    cursor: pointer;
+}
+
+.pretty-selector option {
+    font-size: 1rem;
+    color: #444;
+}
+
+.pretty-selector:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.price-filter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 10px;
+}
+
+.price-filter label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.price-filter input {
+    border: none;
+    border-bottom: 2px solid #ddd;
+    padding: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+    width: 100px;
+    outline: none;
+}
+
+.price-filter input:focus {
+    border-bottom-color: #6e93b5;
+}
+
+.button {
+    display: flex;
+    justify-content: end;
+}
+
+.filter-button {
+    background-color: #6e93b5;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-button:hover {
+    background-color: #46628c;
+}
+
+.sides {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.left {
+    width: 341px;
+}
+
+.right {
+    width: 400px;
+}
+
+.imgsarea {
+    display: flex;
+    gap: 5px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 370px;
+}
+
+.car-img {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    display: flex;
+    justify-content: end;
+}
+
+.car-img img {
+    object-fit: cover;
+    width: 120px;
+    height: 120px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    box-shadow: 0px 0px 2px black;
+}
+
+.car-img button {
+    z-index: 10;
+    position: absolute;
+    border: none;
+    color: black;
+    background: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.custom-file-input {
+    width: 320px;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.custom-file-input::before {
+    content: 'Select some files';
+    display: inline-block;
+    background: linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+}
+
+.custom-file-input:hover::before {
+    border-color: black;
+}
+
+.custom-file-input:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+.filter-button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

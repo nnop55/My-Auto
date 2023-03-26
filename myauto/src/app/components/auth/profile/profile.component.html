@@ -1,0 +1,64 @@
+<div class="container">
+    <mat-card class="example-card">
+        <mat-card-content>
+            <mat-card-title><b>Username</b> : {{user?.username}}</mat-card-title>
+            <mat-card-title><b>Email</b> : {{user?.email}}</mat-card-title>
+        </mat-card-content>
+    </mat-card>
+    <div class="filters-wrapper">
+        <div class="cardsarea">
+            <div *ngFor="let car of carData" class="card">
+                <div class="left">
+                    <img [src]="car.images[0]">
+                </div>
+                <div class="middle">
+                    <div class="car-name">
+                        <h3>{{car.manufacturer}} {{car.model}}</h3>
+                        <h3>{{car.year}} Year</h3>
+                    </div>
+                    <div class="bit-info">
+                        <p>{{car.engine}} {{car.fuelType}}</p>
+                        <p>{{car.transsimission}}</p>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="car-place">
+                        <p>{{car.place}}</p>
+                    </div>
+                    <div class="edit-delete">
+                        <button routerLink="/edit-car/{{car.uid}}"><mat-icon>create</mat-icon></button>
+                        <button (click)="deleteCar(car)"><mat-icon>delete_outline</mat-icon></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="favorite-cars">
+        <h1>Favorites</h1>
+        <div class="empty" *ngIf="user?.favorites.length == 0">
+            <h3>You don't have favorite car</h3>
+        </div>
+        <div class="cardsarea" *ngIf="user?.favorites.length > 0">
+            <div *ngFor="let car of user?.favorites" routerLink="/car/{{car.uid}}" class="card">
+                <div class="left">
+                    <img [src]="car.images[0]">
+                </div>
+                <div class="middle">
+                    <div class="car-name">
+                        <h3>{{car.manufacturer}} {{car.model}}</h3>
+                        <h3>{{car.year}} Year</h3>
+                    </div>
+                    <div class="bit-info">
+                        <p>{{car.engine}} {{car.fuelType}}</p>
+                        <p>{{car.transsimission}}</p>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="car-place">
+                        <p>{{car.place}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

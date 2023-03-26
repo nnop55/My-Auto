@@ -1,0 +1,101 @@
+.main {
+    padding: 10px;
+    box-shadow: 0px 0px 5px black;
+    border-radius: 5px;
+    width: 80%;
+    margin: 130px auto;
+}
+
+.filters-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.cardsarea {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card:hover {
+    background-color: #e6e6e6;
+}
+
+.card {
+    display: flex;
+    justify-content: space-around;
+    width: 800px;
+    box-shadow: 0px 0px 1px black;
+    border-radius: 10px;
+    padding: 5px;
+    transition: 200ms;
+}
+
+.left {
+    width: 200px;
+}
+
+.left img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.middle {
+    width: 250px;
+}
+
+.car-name {
+    display: flex;
+    gap: 5px;
+}
+
+.car-name:first-child {
+    font-weight: bolder;
+}
+
+.car-name:last-child {
+    color: #7d7d7d;
+}
+
+.car-place p {
+    color: #7d7d7d;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100px;
+}
+
+.car-price {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.car-price p {
+    margin: 0px;
+}
+
+.full button {
+    border: 1px solid lightblue;
+    background: #567a86;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.full button:hover {
+    background: #273f47;
+}
